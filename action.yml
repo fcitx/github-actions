@@ -16,7 +16,11 @@ runs:
     - name: Configure
       shell: bash
       run: |
-        cmake -G Ninja -S "${{ inputs.path }}" -B "${{ inputs.path }}"/build -DCMAKE_INSTALL_PREFIX="${{ inputs.install-prefix }}" ${{ inputs.camke-option }}
+        cmake -G Ninja \
+              -S "${{ inputs.path }}" \
+              -B "${{ inputs.path }}"/build \
+              ${{ inputs.cmake-option }} \
+              -DCMAKE_INSTALL_PREFIX="${{ inputs.install-prefix }}"
     - name: Build
       shell: bash
       run: |
