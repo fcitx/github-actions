@@ -20,7 +20,7 @@ runs:
     - name: Build
       shell: bash
       run: |
-        cmake --build -j "${{ inputs.path }}"/build
+        cmake --build "${{ inputs.path }}"/build -j
     - name: Install
       shell: bash
       run: |
