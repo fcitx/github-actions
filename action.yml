@@ -1,0 +1,28 @@
+name: 'Build and install with cmake'
+
+inputs:
+  path:
+    description: 'Path to source code'
+  install-prefix:
+    description: 'Install prefix'
+    default: '/opt/fcitx'
+  cmake-option:
+    description: 'Cmake option'
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Configure
+      shell: bash
+      run: |
+        cmake -S "${{ inputs.path }}" -B "${{ inputs.path }}"/build -DCMAKE_INSTALL_PREFIX="${{ inputs.install-prefix }}" ${{ inputs.camke-option }}
+    - name: Build
+      shell: bash
+      run: |
+        cmake --build "${{ inputs.path }}"/build
+    - name: Install
+      shell: bash
+      run: |
+        cmake --install "${{ inputs.path }}"/build
+
