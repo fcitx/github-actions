@@ -1,0 +1,15 @@
+name: "Check clang format"
+
+inputs:
+  path:
+    description: 'Path to source code'
+    default: "."
+
+runs:
+  using: composite
+  steps:
+    - name: "Check clang format"
+      working-directory: ${{ inputs.path }}
+      run: |
+        ${{ github.action_path }}/check-clang-format.sh --check
+      shell: bash
