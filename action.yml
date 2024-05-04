@@ -11,8 +11,5 @@ runs:
     - name: "Check clang format"
       working-directory: ${{ inputs.path }}
       run: |
-        pwd
-        ls -al
-        git rev-parse --show-toplevel
         ${GITHUB_ACTION_PATH}/check-clang-format.sh
       shell: bash
