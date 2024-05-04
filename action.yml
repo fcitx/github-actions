@@ -11,5 +11,5 @@ runs:
     - name: "Check clang format"
       working-directory: ${{ inputs.path }}
       run: |
-        ${{ github.action_path }}/check-clang-format.sh --check
+        ${{ github.action_path }}/check-clang-format.sh
       shell: bash
