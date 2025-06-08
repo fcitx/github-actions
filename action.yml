@@ -9,12 +9,15 @@ inputs:
   cmake-option:
     description: 'Cmake option'
     default: ''
+  shell:
+    description: 'Shell'
+    default: bash
 
 runs:
   using: composite
   steps:
     - name: Configure
-      shell: bash
+      shell: ${{ inputs.shell }}
       run: |
         cmake -G Ninja \
               -S "${{ inputs.path }}" \
@@ -22,11 +25,11 @@ runs:
               ${{ inputs.cmake-option }} \
               -DCMAKE_INSTALL_PREFIX="${{ inputs.install-prefix }}"
     - name: Build
-      shell: bash
+      shell: ${{ inputs.shell }}
       run: |
         cmake --build "${{ inputs.path }}"/build -j
     - name: Install
-      shell: bash
+      shell: ${{ inputs.shell }}
       run: |
         cmake --install "${{ inputs.path }}"/build
 
