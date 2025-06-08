@@ -19,13 +19,13 @@ runs:
     - name: Configure
       shell: ${{ inputs.shell }}
       run: |
-        cmake -G Ninja -S "${{ inputs.path }}" -B "${{ inputs.path }}"/build ${{ inputs.cmake-option }} -DCMAKE_INSTALL_PREFIX="${{ inputs.install-prefix }}"
+        cmake -G Ninja -S "${{ inputs.path }}" -B "${{ inputs.path }}/build" ${{ inputs.cmake-option }} -DCMAKE_INSTALL_PREFIX="${{ inputs.install-prefix }}"
     - name: Build
       shell: ${{ inputs.shell }}
       run: |
-        cmake --build "${{ inputs.path }}"/build -j
+        cmake --build "${{ inputs.path }}/build" -j
     - name: Install
       shell: ${{ inputs.shell }}
       run: |
-        cmake --install "${{ inputs.path }}"/build
+        cmake --install "${{ inputs.path }}/build"
 
